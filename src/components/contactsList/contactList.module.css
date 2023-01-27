@@ -1,0 +1,19 @@
+.contactList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0px;
+  align-content: center;
+
+}
+.loader {
+ justify-content: center;
+ align-items: center;
+}
+.container{
+  display: flex;
+}
+.wrapper-class{
+  justify-content: center;
+  background: red;
+}
