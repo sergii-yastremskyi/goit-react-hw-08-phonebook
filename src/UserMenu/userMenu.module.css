@@ -1,0 +1,7 @@
+.userMenuContainer {
+  display: flex;
+  flex-direction: row;
+}
+.spacer {
+  margin-right: 5px;
+}

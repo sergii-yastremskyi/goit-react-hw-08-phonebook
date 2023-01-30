@@ -17,8 +17,15 @@ export default function UserMenu() {
   };
 
   return (
-    <div>
-      <p>{userName}</p> <span>avatar</span>
+    <div className={css.userMenuContainer}>
+      <p className={css.spacer}>{userName}</p>
+      <img
+        src="https://i.pravatar.cc/50"
+        alt="User Avatar"
+        width="50"
+        height="50"
+        className={css.spacer}
+      ></img>
       <button type="button" onClick={handleClick}>
         Log Out
       </button>

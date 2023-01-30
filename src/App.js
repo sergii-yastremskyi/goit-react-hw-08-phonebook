@@ -22,12 +22,14 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<HomeView />} />
+        <Route index element={<HomeView />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         {/* <PrivateRoute path="/contacts">
           <Contacts />
         </PrivateRoute> */}
         <Route path="/contacts" element={<Contacts />} />
+        <Route path="/*" element={<HomeView />} />
       </Routes>
 
       {/* <Suspense fallback={<div>Loading...</div>}></Suspense> */}

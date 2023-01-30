@@ -3,7 +3,8 @@ import style from '../shared/shared.module.css';
 export default function HomeView() {
   return (
     <div className={style.container}>
-      <p>MAIN PAGE</p>
+      <h1>Web phonebook</h1>
+      <p>Please authentificate to proceed</p>
     </div>
   );
 }
