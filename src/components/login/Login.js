@@ -5,9 +5,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import style from '../shared/shared.module.css';
 import { logIn } from '../redux/auth/auth-operations';
-import { getToken } from '../redux/auth/auth-selectors';
+import { getError, getToken } from '../redux/auth/auth-selectors';
 import { Navigate } from 'react-router-dom';
+import ErrorComponent from '../errorComponent/errorComponent';
+
 export default function Login() {
+  const errorState = useSelector(getError);
   const [mail, setMail] = useState('');
   const [pass, setPass] = useState('');
   const dispatch = useDispatch();
@@ -41,6 +44,7 @@ export default function Login() {
   const mailId = nanoid();
   const passId = nanoid();
   const token = useSelector(getToken);
+
   return (
     <div>
       {token === '' ? (
@@ -68,6 +72,8 @@ export default function Login() {
                 required
               />
             </div>
+            {errorState && <ErrorComponent />}
+
             <button type="submit">Log in!</button>
           </form>
         </div>

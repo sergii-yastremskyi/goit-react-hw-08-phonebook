@@ -2,7 +2,7 @@ import React, { Suspense, useEffect } from 'react';
 import Register from './components/register/';
 import Login from './components/login';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import Contacts from './components/contacts';
+
 import AppBar from './AppBar/AppBar';
 import HomeView from './components/HomeView';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,21 +14,18 @@ export default function App() {
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
-    console.log('fetch user');
   }, [dispatch]);
   return (
     <>
       <AppBar />
 
       <Routes>
-        <Route path="/" element={<HomeView />} />
+        <Route exact path="/" element={<HomeView />} />
         <Route index element={<HomeView />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        {/* <PrivateRoute path="/contacts">
-          <Contacts />
-        </PrivateRoute> */}
-        <Route path="/contacts" element={<Contacts />} />
+        <Route path="/contacts" element={<PrivateRoute />} />
+        {/* <Route path="/contacts" element={<Contacts />} /> */}
         <Route path="/*" element={<HomeView />} />
       </Routes>
 

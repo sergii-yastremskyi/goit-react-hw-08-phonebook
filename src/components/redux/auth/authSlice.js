@@ -21,6 +21,11 @@ const initialValue = {
 const authSlice = createSlice({
   name: 'auth',
   initialState: initialValue,
+  reducers: {
+    errorClear: store => {
+      store.error = null;
+    },
+  },
   extraReducers: {
     [signUp.pending]: store => {
       store.loading = true;
@@ -75,3 +80,4 @@ const authSlice = createSlice({
 });
 
 export const authReducer = persistReducer(persistConfig, authSlice.reducer);
+export const { errorClear } = authSlice.actions;

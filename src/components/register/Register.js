@@ -5,12 +5,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import style from '../shared/shared.module.css';
 import { signUp } from '../redux/auth/auth-operations';
+import { getError } from '../redux/auth/auth-selectors';
+import ErrorComponent from '../errorComponent/errorComponent';
 
 export default function Register() {
   const [mail, setMail] = useState('');
   const [pass, setPass] = useState('');
   const [name, setName] = useState('');
   const dispatch = useDispatch();
+  const errorState = useSelector(getError);
   const formSubmitHandler = (mail, pass, name) => {
     dispatch(signUp({ name: name, password: pass, email: mail }));
   };
@@ -81,6 +84,7 @@ export default function Register() {
             required
           />
         </div>
+        {errorState && <ErrorComponent />}
         <button type="submit">Register</button>
       </form>
     </div>

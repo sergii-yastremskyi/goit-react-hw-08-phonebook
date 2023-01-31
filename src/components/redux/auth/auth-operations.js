@@ -3,6 +3,7 @@ import * as api from '../../shared/api/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as contactsApi from '../../shared/api/contacts';
 import { instanceContacts } from '../../shared/api/contacts';
+import { useDispatch } from 'react-redux';
 export const token = {
   set(token) {
     api.instanceAuth.defaults.headers.common[
@@ -18,6 +19,10 @@ export const token = {
   },
 };
 
+// export const clearError = () => {
+//   const dispatch = useDispatch();
+//   dispatch();
+// };
 export const signUp = createAsyncThunk(
   'auth/signUp',
   async (data, thunkApi) => {
@@ -53,7 +58,6 @@ export const logIn = createAsyncThunk(
   async (credentials, thunkApi) => {
     try {
       const res = await api.logIn(credentials);
-
       token.set(res.token);
 
       return res;
