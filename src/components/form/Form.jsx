@@ -10,11 +10,17 @@ export default function Form() {
   const contacts = useSelector(getContacts);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const [error, setError] = useState(false);
 
   const formSubmitHandler = (name, number) => {
     dispatch(addContact({ name, number }));
   };
-
+  const errorSetter = name => {
+    setError(`Name ${name} already in a list`);
+    setTimeout(() => {
+      setError(false);
+    }, 3000);
+  };
   const handleChange = e => {
     const { name, value } = e.currentTarget;
     switch (name) {
@@ -31,8 +37,12 @@ export default function Form() {
   const handleSubmit = e => {
     e.preventDefault();
 
-    formSubmitHandler(name, number);
-    reset();
+    if (contacts.some(contact => contact.name === name)) {
+      errorSetter(name);
+    } else {
+      formSubmitHandler(name, number);
+      reset();
+    }
   };
   const reset = () => {
     setName('');
@@ -67,8 +77,19 @@ export default function Form() {
             required
           />
         </div>
-        <button type="submit">Add contact</button>
+        <button
+          type="submit"
+          className={`${css.button} ${error && css.errorButton}`}
+        >
+          Add contact
+        </button>
       </form>
+      {/* {error && ( */}
+      <div className={`${css.errorMsg} ${css.hide} ${error && css.show}`}>
+        {' '}
+        {error}
+      </div>
+      {/* )} */}
     </div>
   );
 }

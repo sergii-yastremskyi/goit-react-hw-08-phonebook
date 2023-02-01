@@ -28,7 +28,7 @@ export const signUp = createAsyncThunk(
   async (data, thunkApi) => {
     try {
       const res = await api.signUp(data);
-      // console.log(res);
+
       token.set(res.token);
 
       return res;
@@ -40,11 +40,6 @@ export const signUp = createAsyncThunk(
 
 export const logOut = createAsyncThunk('auth/logOut', async (_, thunkApi) => {
   try {
-    // token.set(tokenArg);
-    console.log(
-      'header inside log out  ',
-      api.instanceAuth.defaults.headers.common
-    );
     const res = await api.logOut();
     token.unset();
     return res;
@@ -71,16 +66,15 @@ export const fetchCurrentUser = createAsyncThunk(
   async (_, thunkAPI) => {
     const store = thunkAPI.getState();
     const persistedToken = store.auth.token;
-    console.log('inside fetch user');
+
     if (persistedToken === '') {
-      console.log('Токена нет, уходим из fetchCurrentUser');
       return thunkAPI.rejectWithValue();
     }
-    console.log('fetch persisted tokeens', persistedToken);
+
     token.set(persistedToken);
     try {
       const { data } = await api.instanceAuth.get('/users/current');
-      console.log(data);
+
       return data;
     } catch (error) {
       // TODO: Добавить обработку ошибки error.message

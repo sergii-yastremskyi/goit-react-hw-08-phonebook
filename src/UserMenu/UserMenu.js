@@ -4,14 +4,12 @@ import css from './userMenu.module.css';
 import { logOut } from '../components/redux/auth/auth-operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { getToken, getUsername } from '../components/redux/auth/auth-selectors';
-import { Navigate, useNavigate } from 'react-router-dom';
+// import { Navigate, useNavigate } from 'react-router-dom';
 
 export default function UserMenu() {
   const userName = useSelector(getUsername);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  // const token = useSelector(getToken);
-  console.log(userName);
+
   const handleClick = () => {
     dispatch(logOut());
   };

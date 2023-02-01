@@ -6,8 +6,6 @@ export const instanceContacts = axios.create({
 });
 
 export const getContacts = async () => {
-  // instanceContacts.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-  // console.log('inside api headers', instanceContacts.defaults.headers);
   const { data } = await instanceContacts.get('/contacts');
   return data;
 };

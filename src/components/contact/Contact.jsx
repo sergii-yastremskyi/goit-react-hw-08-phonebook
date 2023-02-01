@@ -6,18 +6,18 @@ import { useSelector, useDispatch } from 'react-redux';
 const Contact = ({ data, onDelete }) => {
   const dispatch = useDispatch();
   const handleDelete = id => {
-    console.log(id);
     dispatch(removeContact(id));
   };
   return (
     <li>
       <span className={css.name}>{data.name}:</span>
       <span className={css.number}>{data.number}</span>
+      <div style={{ flexGrow: 1 }} />
       <button
         id={data.id}
         onClick={e => handleDelete(data.id)}
         type="button"
-        className=""
+        className={css.button}
       >
         Delete
       </button>

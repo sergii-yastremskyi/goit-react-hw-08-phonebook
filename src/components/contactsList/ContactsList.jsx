@@ -15,14 +15,13 @@ const ContactsList = () => {
   const token = useSelector(getToken);
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log('contactlist', token);
     dispatch(fetchContacts(token));
   }, []);
 
   const contacts = useSelector(getContacts);
   const loader = useSelector(getLoader);
   const filter = useSelector(getFilter);
-  // console.log(loader);
+
   const getVisibleContacts = () => {
     const normalizedFilter = filter.toLowerCase();
 

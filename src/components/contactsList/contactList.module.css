@@ -2,18 +2,20 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  /* align-items: center; */
   margin: 0px;
-  align-content: center;
-
+  max-width: 400px;
+  padding: 0px;
+  width: 90vw;
 }
 .loader {
- justify-content: center;
- align-items: center;
+  justify-content: center;
+  align-items: center;
 }
-.container{
+.container {
   display: flex;
 }
-.wrapper-class{
+.wrapper-class {
   justify-content: center;
   background: red;
 }

@@ -1,9 +1,10 @@
 li {
-  margin: 0 auto;
+  width: 100%;
+  /* margin: 0 auto; */
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-content: center;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 10px;
 }
 .name {
@@ -11,4 +12,7 @@ li {
 }
 .number {
   margin-right: 5px;
+}
+.button {
+  margin-left: 20px;
 }
